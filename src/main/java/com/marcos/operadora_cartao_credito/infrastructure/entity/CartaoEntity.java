@@ -29,14 +29,20 @@ public class CartaoEntity {
     @JoinColumn(name = "cliente_id")
     private ClienteEntity cliente;
 
-    public CartaoEntity(String numero, LocalDate dataExpiracao, String cvv,
-                       double limite, double availableLimit, ClienteEntity cliente,
-                       LocalDate ultimaAlteracaoLimite, Integer dataVencimentoFatura) {
+    public CartaoEntity(String numero,
+                        LocalDate dataExpiracao,
+                        String cvv,
+                        double limiteCartao,
+                        double limiteCartaoDisponivel,
+                        ClienteEntity cliente,
+                        LocalDate ultimaAlteracaoLimite,
+                        Integer dataVencimentoFatura) {
+
         this.numero = numero;
         this.dataExpiracao = dataExpiracao;
         this.cvv = cvv;
-        this.limiteCartao = limite;
-        this.LimiteCartaoDisponivel = availableLimit;
+        this.limiteCartao = limiteCartao;
+        this.LimiteCartaoDisponivel = limiteCartaoDisponivel;
         this.cliente = cliente;
         this.ultimaAlteracaoLimite = ultimaAlteracaoLimite;
         this.dataVencimentoFatura = dataVencimentoFatura;
