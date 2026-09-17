@@ -7,10 +7,7 @@ import com.marcos.operadora_cartao_credito.business.dto.out.ClienteResponseDTO;
 import com.marcos.operadora_cartao_credito.business.mapper.ClienteMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +23,14 @@ public class ClienteController {
                         clienteService.solicitarCartao(
                                 clienteMapper.paraClienteEntity(clienteRequestDTO)
                         )
+                )
+        );
+    }
+
+    @GetMapping
+    public ResponseEntity<ClienteResponseDTO> buscaClientePorCpf(@RequestParam String cpf) {
+        return ResponseEntity.ok(clienteMapper.paraClienteResponseDTO(
+                        clienteService.buscaClientePorCpf(cpf)
                 )
         );
     }
